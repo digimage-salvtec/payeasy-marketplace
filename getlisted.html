@@ -224,7 +224,66 @@
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/quantity.js"></script>
 
+    <!-- Form Validation -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
+
+    <script>
+      const constraints = {
+        companyName: {
+          presence: { allowEmpty: false },
+        },
+        businesCategory: {
+          presence: { allowEmpty: false },
+        },
+        emailAddress: {
+          presence: { allowEmpty: false },
+        },
+        telephone: {
+          presence: { allowEmpty: false },
+        },
+        mobile: {
+          presence: { allowEmpty: false },
+          email: true,
+        },
+        physicalAddress: {
+          presence: { allowEmpty: false },
+        },
+        description: {
+          presence: { allowEmpty: false },
+        },
+      };
+
+      const form = document.getElementById("contact-form");
+      form.addEventListener(
+        "submit",
+        function (event) {
+          const formValues = {
+            companyName: form.elements.companyName.value,
+            businesCategory: form.elements.businesCategory.value,
+            emailAddress: form.elements.emailAddress.value,
+            telephone: form.elements.telephone.value,
+            mobile: form.elements.mobile.value,
+            physicalAddress: form.elements.physicalAddress.value,
+            description: form.elements.description.value,
+          };
+
+          const errors = validate(formValues, constraints);
+
+          if (errors) {
+            event.preventDefault();
+            const errorMessage = Object.values(errors)
+              .map(function (fieldValues) {
+                return fieldValues.join(", ");
+              })
+              .join("\n");
+            alert(errorMessage);
+          }
+        },
+        false
+      );
+    </script>
   </body>
 </html>
