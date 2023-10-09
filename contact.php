@@ -80,7 +80,7 @@ if (!empty($_POST)) {
     
         // server settings
         $mail->isSMTP();
-        $mail->SMTPDebug = 2;
+        // $mail->SMTPDebug = 2;
         $mail->Host = 'mail.epaynetsz.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'marketplace@epaynetsz.com';
