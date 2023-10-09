@@ -73,7 +73,7 @@ if (!empty($_POST)) {
 
    if(!empty($errors)){
     $allErrors = join('<br>'.$errors);
-    $errorMessage = "<p style='color: red'>{$allErrors}</p>"
+    $errorMessage = "<p style='color: red'>{$allErrors}</p>";
    }
    else{
     try{
